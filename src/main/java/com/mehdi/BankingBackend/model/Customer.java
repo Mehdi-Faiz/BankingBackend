@@ -5,6 +5,8 @@ import lombok.Setter;
 import lombok.NoArgsConstructor;
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "customers")
 @Getter
@@ -21,4 +23,7 @@ public class Customer {
 
     @Column(nullable = false)
     private String password;
+
+    @OneToMany(mappedBy = "customer")
+    private List<Account> accounts;
 }
