@@ -1,5 +1,6 @@
 package com.mehdi.BankingBackend.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.NoArgsConstructor;
@@ -9,9 +10,9 @@ import java.util.List;
 
 @Entity
 @Table(name = "customers")
+@NoArgsConstructor
 @Getter
 @Setter
-@NoArgsConstructor
 public class Customer {
 
     @Id
@@ -19,9 +20,11 @@ public class Customer {
     private Long id;
 
     @Column(unique = true, nullable = false)
+    @JsonProperty("email")
     private String email;
 
     @Column(nullable = false)
+    @JsonProperty("password")
     private String password;
 
     @OneToMany(mappedBy = "customer")
