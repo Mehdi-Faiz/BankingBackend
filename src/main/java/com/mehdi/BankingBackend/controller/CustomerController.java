@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mehdi.BankingBackend.model.Customer;
 import com.mehdi.BankingBackend.repository.CustomerRepository;
+import com.mehdi.BankingBackend.service.CustomerService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,19 +18,19 @@ import java.util.List;
 @RequestMapping("/customers")
 public class CustomerController {
 
-    private final CustomerRepository customerRepository;
+    private final CustomerService customerService;
 
-    public CustomerController(CustomerRepository customerRepository) {
-        this.customerRepository = customerRepository;
+    public CustomerController(CustomerService customerService) {
+        this.customerService = customerService;
     }
 
     @PostMapping
     public Customer createCustomer(@RequestBody Customer customer) {
-        return customerRepository.save(customer);
+        return customerService.createCustomer(customer);
     }
 
     @GetMapping
     public List<Customer> getAllCustomers() {
-        return customerRepository.findAll();
+        return customerService.getAllCustomers();
     }
 }
