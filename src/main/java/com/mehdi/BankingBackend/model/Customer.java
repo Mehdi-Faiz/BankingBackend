@@ -6,6 +6,7 @@ import lombok.Setter;
 import lombok.NoArgsConstructor;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -27,6 +28,6 @@ public class Customer {
     @JsonProperty("password")
     private String password;
 
-    @OneToMany(mappedBy = "customer")
-    private List<Account> accounts;
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Account> accounts = new ArrayList<>();
 }
