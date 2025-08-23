@@ -19,7 +19,7 @@ public class AccountService {
         return this.accountRepository.save(account);
     }
 
-//    public List<Account> getAllAccounts() {
-//        return this.accountRepository.findAll();
-//    }
+    public List<Account> getAllAccounts() {
+        return this.accountRepository.findAll();
+    }
 }
