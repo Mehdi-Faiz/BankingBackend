@@ -10,7 +10,7 @@ import java.util.List;
 @Getter
 @Setter
 public class AccountDTO {
-    private long id;
+    //    private long id;
     private String accountNumber;
     private Double balance;
 }

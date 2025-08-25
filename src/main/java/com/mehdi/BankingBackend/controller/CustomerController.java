@@ -41,8 +41,9 @@ public class CustomerController {
     }
 
     @GetMapping
-    public List<Customer> getAllCustomers() {
-        return customerService.getAllCustomers();
+    public List<CustomerDTO> getAllCustomers() {
+        //returns customer dto instead of full customer entity
+        return customerService.getAllCustomers().stream().map(this::toCustomerDTO).toList();
     }
 
     private CustomerDTO toCustomerDTO(Customer customer) {
@@ -53,7 +54,7 @@ public class CustomerController {
         // map accounts
         List<AccountDTO> accountDTOs = customer.getAccounts().stream().map(account -> {
             AccountDTO accDto = new AccountDTO();
-            accDto.setId(account.getId());
+//            accDto.setId(account.getId());
             accDto.setAccountNumber(account.getAccountNumber());
             accDto.setBalance(account.getBalance());
             return accDto;
