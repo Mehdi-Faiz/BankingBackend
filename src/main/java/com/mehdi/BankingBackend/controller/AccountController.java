@@ -4,12 +4,19 @@ import com.mehdi.BankingBackend.model.Account;
 import com.mehdi.BankingBackend.service.AccountService;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+
+//need to add this operations:
+//Deposit money
+//Withdraw money
+//Transfer between accounts
+//Check balance
+
+@RestController
+@RequestMapping("/accounts")
 public class AccountController {
 
     private final AccountService accountService;
@@ -18,13 +25,8 @@ public class AccountController {
         this.accountService = accountService;
     }
 
-//    @PostMapping
-//    public Account createAccount(@RequestBody Account account) {
-//        return this.accountService.createAccount(account);
-//    }
-//
-//    @GetMapping
-//    public List<Account> getAccounts() {
-//        return this.accountService.getAllAccounts();
-//    }
+    @GetMapping("/{id}/balance")
+    public Double getBalance(@PathVariable Long id) {
+        return accountService.getBalance(id);
+    }
 }

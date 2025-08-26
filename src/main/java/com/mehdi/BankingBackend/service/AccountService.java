@@ -22,4 +22,10 @@ public class AccountService {
     public List<Account> getAllAccounts() {
         return this.accountRepository.findAll();
     }
+
+    public Double getBalance(Long accountId) {
+        Account account = this.accountRepository.findById(accountId)
+                .orElseThrow(() -> new RuntimeException("Account not found with id: " + accountId));
+        return account.getBalance();
+    }
 }

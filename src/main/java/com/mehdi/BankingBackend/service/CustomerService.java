@@ -23,7 +23,7 @@ public class CustomerService {
         //opens and assign an account to the new customer
         Account account = new Account();
         account.setAccountNumber("ACC-" + System.currentTimeMillis());
-        account.setBalance(0.0);
+        account.setBalance(600.0);
 
         //syncs the account and customer in the 2 classes
         account.setCustomer(customer);
