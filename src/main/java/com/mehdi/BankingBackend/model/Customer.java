@@ -30,6 +30,5 @@ public class Customer {
     private String password;
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
     private List<Account> accounts = new ArrayList<>();
 }
