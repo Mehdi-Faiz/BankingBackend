@@ -12,9 +12,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
+//Create global error handling system
 
 //need to add this operations:
-//Deposit money
+
+//Deposit money -> DONE
 //Withdraw money
 //Transfer between accounts
 
