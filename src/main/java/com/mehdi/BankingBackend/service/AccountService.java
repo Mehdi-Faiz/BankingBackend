@@ -40,4 +40,16 @@ public class AccountService {
         account.setBalance(amount + account.getBalance());
         return account.getBalance();
     }
+
+    @Transactional
+    public Double withdraw(Long accountID, Double amount) {
+        Account account = this.accountRepository.findById(accountID)
+                .orElseThrow(() -> new RuntimeException("Account not found with id: " + accountID));
+        if (account.getBalance() - amount < 0) {
+            throw new IllegalArgumentException("Withdraw amount more then current balance");
+        }
+        account.setBalance(account.getBalance() - amount);
+        return account.getBalance();
+    }
+
 }

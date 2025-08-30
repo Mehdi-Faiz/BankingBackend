@@ -46,4 +46,13 @@ public class AccountController {
                 "balance", newBalance
         ));
     }
+
+    @PostMapping("/{id}/withdraw")
+    public ResponseEntity<Map<String, Object>> wihdraw(@PathVariable Long id, @RequestParam Double amount) {
+        Double newBalance = accountService.withdraw(id, amount);
+        return ResponseEntity.ok(Map.of(
+                "message", "Withdraw successful",
+                "balance remaining", newBalance
+        ));
+    }
 }

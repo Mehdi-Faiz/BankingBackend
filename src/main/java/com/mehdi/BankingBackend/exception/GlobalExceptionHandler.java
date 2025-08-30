@@ -13,7 +13,6 @@ import java.time.LocalDateTime;
 @Hidden
 public class GlobalExceptionHandler {
 
-    // Small DTO for error responses
     static class ErrorResponse {
         private final int status;
         private final String message;
