@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-//Create global error handling system
+//Create global error handling system -> Done
 
 //need to add this operations:
 
@@ -21,7 +21,7 @@ import java.util.Objects;
 
 //Withdraw money -> Done
 
-//Transfer between accounts ->
+//Transfer between accounts -> Done
 
 //Check balance -> DONE
 

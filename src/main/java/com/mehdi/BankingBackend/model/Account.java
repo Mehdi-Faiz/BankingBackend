@@ -8,6 +8,7 @@ import lombok.Setter;
 import org.hibernate.Transaction;
 import org.hibernate.annotations.Columns;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -26,6 +27,9 @@ public class Account {
 
     @Column(nullable = false)
     private Double balance;
+
+    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Transactions> transactions = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "customer_id", nullable = false)
