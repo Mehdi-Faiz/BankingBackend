@@ -3,6 +3,7 @@ package com.mehdi.BankingBackend.controller;
 import com.mehdi.BankingBackend.model.Account;
 import com.mehdi.BankingBackend.service.AccountService;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
+import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
@@ -17,8 +18,10 @@ import java.util.Objects;
 //need to add this operations:
 
 //Deposit money -> DONE
-//Withdraw money
-//Transfer between accounts
+
+//Withdraw money -> Done
+
+//Transfer between accounts ->
 
 //Check balance -> DONE
 
@@ -53,6 +56,15 @@ public class AccountController {
         return ResponseEntity.ok(Map.of(
                 "message", "Withdraw successful",
                 "balance remaining", newBalance
+        ));
+    }
+
+    @PostMapping("/{sender}/{receiver}/transfer")
+    public ResponseEntity<Map<String, Object>> transfer(@PathVariable Long sender, @PathVariable Long receiver, @RequestParam Double amount) {
+        Double newBalance = accountService.sendMoney(sender, receiver, amount);
+        return ResponseEntity.ok(Map.of(
+                "message", "Transfer has been completed successfully",
+                "current balance is", newBalance
         ));
     }
 }

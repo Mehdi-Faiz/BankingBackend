@@ -52,4 +52,22 @@ public class AccountService {
         return account.getBalance();
     }
 
+    @Transactional
+    public Double sendMoney(Long senderAccountID, Long receiverAccountID, Double amount) {
+
+        Account senderAccount = this.accountRepository.findById(senderAccountID)
+                .orElseThrow(() -> new RuntimeException("Account not found with id: " + senderAccountID));
+
+        Account receiverAccount = this.accountRepository.findById(receiverAccountID)
+                .orElseThrow(() -> new RuntimeException("Account not found with id: " + receiverAccountID));
+
+        if (senderAccount.getBalance() - amount < 0) {
+            throw new IllegalArgumentException("Cannot transfer money. No sufficient balance");
+        }
+        senderAccount.setBalance(senderAccount.getBalance() - amount);
+        receiverAccount.setBalance(receiverAccount.getBalance() + amount);
+
+        return senderAccount.getBalance();
+    }
+
 }
