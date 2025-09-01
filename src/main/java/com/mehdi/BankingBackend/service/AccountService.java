@@ -23,9 +23,8 @@ public class AccountService {
     }
 
     public Account getAccount(Long accountId) {
-        Account account = this.accountRepository.findById(accountId)
+        return this.accountRepository.findById(accountId)
                 .orElseThrow(() -> new RuntimeException("Account not found with id: " + accountId));
-        return account;
     }
 
     public List<Account> getAllAccounts() {
