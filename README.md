@@ -1,7 +1,7 @@
 
 # BankingBacked
 
-BankingBacked is a small project done in Java/SpringBoot that attemps to recreate the inner workings of a real world bank... backend.
+BankingBacked is a small project done in Java/SpringBoot that attemps to recreate the inner workings of a real world banking... backend.
 
 Although this project is relativly small I touch a lot of the most important aspects of a professional grade backend.
 
