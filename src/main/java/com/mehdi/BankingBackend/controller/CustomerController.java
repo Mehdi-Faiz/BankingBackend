@@ -43,7 +43,6 @@ public class CustomerController {
 
     @GetMapping
     public List<CustomerDTO> getAllCustomers() {
-        //returns customer dto instead of full customer entity
         return customerService.getAllCustomers().stream().map(CustomerDTOMapper::toCustomerDTO).toList();
     }
 }

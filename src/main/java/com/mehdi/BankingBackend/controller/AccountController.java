@@ -1,9 +1,11 @@
 package com.mehdi.BankingBackend.controller;
 
 import com.mehdi.BankingBackend.model.Account;
+import com.mehdi.BankingBackend.model.Transaction;
 import com.mehdi.BankingBackend.service.AccountService;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import org.apache.coyote.Response;
+import org.apache.el.lang.ELArithmetic;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
@@ -66,5 +68,12 @@ public class AccountController {
                 "message", "Transfer has been completed successfully",
                 "current balance is", newBalance
         ));
+    }
+
+    @GetMapping("/{id}/transactions")
+    public ResponseEntity<List<Transaction>> getTransacions(@PathVariable Long id) {
+        Account account = accountService.getAccount(id);
+        List<Transaction> transactions = account.getTransactions();
+        return ResponseEntity.ok(transactions);
     }
 }

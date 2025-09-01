@@ -1,15 +1,16 @@
 package com.mehdi.BankingBackend.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.Transaction;
-import org.hibernate.annotations.Columns;
 
 import java.util.ArrayList;
 import java.util.List;
+
+// customer created -> create account -> wait for the first transaction before creating it
 
 @Entity
 @Table(name = "accounts")
@@ -29,9 +30,11 @@ public class Account {
     private Double balance;
 
     @OneToMany(mappedBy = "account", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Transactions> transactions = new ArrayList<>();
+    @JsonManagedReference
+    private List<Transaction> transactions = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;
+
 }
