@@ -14,7 +14,7 @@ Although this project is relativly small I touch a lot of the most important asp
 
 ## Data & Persistence
 
-+ Uses Spring Data JPA (or Hibernate, if that’s the case) for database interactions.
++ Uses Spring Data JPA for database interactions.
 
 + Entities for core banking concepts (e.g., Customer, Account, Transaction).
 
