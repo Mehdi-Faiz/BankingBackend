@@ -33,3 +33,13 @@ Although this project is relatively small I touch a lot of the most important as
 + Exposes REST endpoints (CRUD operations, transaction handling, etc.).
 
 + Returns JSON responses (consumable by any frontend or mobile app).
+
+## Security
+
++ Implemented basic Spring Security with HTTP Basic Authentication.
+
++ In-memory user details for authentication (username/password).
+
++ Endpoint protection (Swagger UI publicly accessible, sensitive APIs secured).
+
++ CSRF disabled for API-centric use case.
